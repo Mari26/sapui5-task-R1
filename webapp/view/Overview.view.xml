@@ -1,0 +1,13 @@
+<mvc:View
+  controllerName="dummy.firstapp.controller.App"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true">
+  <!-- Main overview page containing the panels we built earlier -->
+  <Page title="{i18n>homePageTitle}">
+    <content>
+      <mvc:XMLView viewName="dummy.firstapp.view.HelloPanel" />
+      <mvc:XMLView viewName="dummy.firstapp.view.InvoiceList" />
+    </content>
+  </Page>
+</mvc:View>

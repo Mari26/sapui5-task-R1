@@ -1,0 +1,10 @@
+<mvc:View
+  controllerName="dummy.firstapp.controller.App"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true">
+  <Shell>
+    <!-- The router will place the views inside this App control automatically -->
+    <App class="myAppDemoWT" id="app"/>
+  </Shell>
+</mvc:View>

@@ -1,0 +1,15 @@
+/* LTR (Left-to-Right) languages padding for the button */
+html[dir="ltr"] .myFirstApp .myCustomButton.sapMBtn {
+   margin-right: 0.125rem;
+}
+
+/* RTL (Right-to-Left) languages padding for the button */
+html[dir="rtl"] .myFirstApp .myCustomButton.sapMBtn {
+   margin-left: 0.125rem;
+}
+
+/* Custom bold text style */
+.myFirstApp .myCustomText {
+   display: inline-block;
+   font-weight: bold;
+}
