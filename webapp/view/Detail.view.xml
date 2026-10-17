@@ -1,8 +1,62 @@
 <mvc:View
+  controllerName="dummy.firstapp.controller.Detail"
   xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
-  <!-- This page will show details of the selected invoice -->
-  <Page title="{i18n>detailPageTitle}">
-    <ObjectHeader title="Invoice"/>
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:wt="dummy.firstapp.control">
+  
+  <Page
+    title="{i18n>detailPageTitle}"
+    showNavButton="true"
+    navButtonPress=".onNavBack">
+    
+    <!-- ObjectHeader is now responsive and fullScreenOptimized -->
+    <ObjectHeader
+      core:require="{
+        Date: 'sap/ui/model/type/Date',
+        Currency: 'sap/ui/model/type/Currency'
+      }"
+      responsive="true"
+      fullScreenOptimized="true"
+      number="{
+        parts: [
+          'invoice>ExtendedPrice',
+          'view>/currency'
+        ],
+        type: 'Currency',
+        formatOptions: {
+          showMeasure: false
+        }
+      }"
+      numberUnit="{view>/currency}"
+      intro="{invoice>ShipperName}"
+      title="{invoice>ProductName}">
+      
+      <!-- Adding extra attributes for Quantity and Date -->
+      <attributes>
+        <ObjectAttribute
+          title="{i18n>quantityTitle}"
+          text="{invoice>Quantity}"/>
+        <ObjectAttribute
+          title="{i18n>dateTitle}"
+          text="{
+            path: 'invoice>OrderDate',
+            type: 'Date',
+            formatOptions: {
+              style: 'long',
+              source: {
+                pattern: 'yyyy-MM-ddTHH:mm:ss'
+              }
+            }
+          }"/>
+      </attributes>
+    </ObjectHeader>
+    
+    <wt:ProductRating 
+      id="rating"
+      tooltip="{invoice>ProductName}"
+      class="sapUiSmallMarginBeginEnd" 
+      change=".onRatingChange" />
+      
   </Page>
 </mvc:View>

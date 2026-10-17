@@ -32,6 +32,10 @@
     }
   },
   "sap.ui5": {
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
     "dependencies": {
       "minUI5Version": "1.148",
       "libs": {
@@ -80,7 +84,7 @@
           "target": "overview"
         },
         {
-          "pattern": "detail",
+          "pattern": "detail/{invoicePath}",
           "name": "detail",
           "target": "detail"
         }

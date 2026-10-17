@@ -28,9 +28,17 @@ sap.ui.define([
 		},
 
 		// Event handler to navigate to the detail page
-		onPress() {
+		onPress(event) {
+			// Get the clicked ObjectListItem
+			const item = event.getSource();
+			// Get the router instance
 			const router = UIComponent.getRouterFor(this);
-			router.navTo("detail");
+			
+			// Navigate to the 'detail' route and pass the encoded binding path of the selected item
+			// We use substring(1) to remove the first '/' before encoding, as it's a special URL character
+			router.navTo("detail", {
+				invoicePath: window.encodeURIComponent(item.getBindingContext("invoice").getPath().substring(1))
+			});
 		}
 	});
 
