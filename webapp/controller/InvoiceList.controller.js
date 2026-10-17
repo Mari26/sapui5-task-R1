@@ -26,7 +26,17 @@ sap.ui.define([
 			const binding = list.getBinding("items");
 			binding.filter(filter);
 		},
+         onFilterStatus(event) {
+			const filter = [];
+			const selectedKey = event.getSource().getSelectedKey();
 
+			if (selectedKey) {
+				filter.push(new Filter("Status", FilterOperator.EQ, selectedKey));
+			}
+			const list = this.byId("invoiceList");
+			const binding = list.getBinding("items");
+			binding.filter(filter);
+		},
 		// Event handler to navigate to the detail page
 		onPress(event) {
 			// Get the clicked ObjectListItem

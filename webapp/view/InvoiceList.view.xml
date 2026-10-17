@@ -15,6 +15,17 @@
         <SearchField
           width="50%"
           search=".onFilterInvoices"/>
+
+          <ComboBox
+          id="statusFilter"
+          selectedKey=""
+          change=".onFilterStatus"
+          width="20%">
+          <core:Item key="" text="{i18n>filterStatusAll}" />
+          <core:Item key="B" text="{i18n>invoiceStatusB}" />
+          <core:Item key="A" text="{i18n>invoiceStatusA}" />
+          <core:Item key="C" text="{i18n>invoiceStatusC}" />
+        </ComboBox>
       </Toolbar>
     </headerToolbar>
     
@@ -53,10 +64,12 @@
           <cells>
             <ObjectNumber number="{invoice>Quantity}" emphasized="false"/>
             <ObjectIdentifier title="{invoice>ProductName}" />
-            <Text text="{
-                path: 'invoice>Status',
-                formatter: '.formatter.statusText'
-              }"/>
+            <Text
+            core:require="{ Formatter: 'dummy/firstapp/model/formatter' }"
+            text="{
+              path: 'invoice>Status',
+              formatter: 'Formatter.statusText.bind($controller)'
+            }"/>
             <Text text="{invoice>ShipperName}" />
             <ObjectNumber
               core:require="{ Currency: 'sap/ui/model/type/Currency' }"
