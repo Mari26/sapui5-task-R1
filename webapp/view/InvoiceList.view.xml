@@ -4,20 +4,25 @@
   xmlns:core="sap.ui.core"
   xmlns:mvc="sap.ui.core.mvc">
   
-  <!-- Wrap the table in a Panel with a Region role for accessibility -->
+
   <Panel accessibleRole="Region">
     
-    <!-- Moved headerToolbar from the Table to the Panel so the region takes its title -->
+    
     <headerToolbar>
       <Toolbar>
         <Title text="{i18n>invoiceListTitle}" />
         <ToolbarSpacer />
+        
+        <!-- Added id="searchField" so the controller can read its value -->
         <SearchField
+          id="searchField"
           width="50%"
           search=".onFilterInvoices"/>
 
-          <ComboBox
-          id="statusFilter"
+        <!-- Changed id to "statusComboBox" to match the controller code -->
+     
+        <ComboBox
+          id="statusComboBox"
           selectedKey=""
           change=".onFilterStatus"
           width="20%">
@@ -34,10 +39,10 @@
       class="sapUiResponsiveMargin"
       width="auto"
       items="{
-          path : 'invoice>/Invoices',
+          path : 'invoice>/',
           sorter : {
-            path : 'ShipperName',
-            group : true
+          path : 'ShipperName',
+          group : true
           }
         }">
       

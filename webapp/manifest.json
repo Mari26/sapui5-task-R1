@@ -58,7 +58,8 @@
         }
       },
      "invoice": {
-        "dataSource": "invoiceRemote"
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./localService/mockdata/Invoices.json"
       }
     },
     "resources": {
